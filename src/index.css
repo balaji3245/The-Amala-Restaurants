@@ -2,13 +2,13 @@
 
 @theme {
   --color-brand: #FF6B00;
-  --color-brand-light: #FFF5EE;
-  --color-brand-dark: #2C1810;
-  --color-brand-beige: #FFDAB9;
+  --color-brand-light: #FFFFFF;
+  --color-brand-dark: #000000;
+  --color-brand-beige: #F9FAFB;
   --color-brand-green: #E66000;
   --color-brand-accent: #FF8A33;
   
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
 }
 
@@ -18,34 +18,42 @@
   }
   
   body {
-    @apply bg-brand-light text-brand-dark antialiased font-sans selection:bg-brand selection:text-white;
+    @apply bg-brand-light text-brand-dark antialiased font-sans selection:bg-brand selection:text-white overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight;
+    @apply font-serif tracking-tight font-bold;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.04)];
+  }
+  
+  .bento-card {
+    @apply bg-gray-50 rounded-3xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .pill {
+    @apply rounded-full px-6 py-3 font-bold text-sm tracking-wide uppercase transition-all duration-300;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4F5F0;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6B705C;
-  border-radius: 4px;
+  background: #E5E7EB;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555A48;
+  background: #FF6B00;
 }

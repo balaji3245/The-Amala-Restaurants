@@ -20,50 +20,46 @@ const Testimonials = () => {
     {
       name: "Sophia Martinez",
       title: "Guest",
-      review: "We celebrated our anniversary here and they made it so special. Every dish was a work of art.",
+      review: "We celebrated our anniversary here and they made it so special. Every dish was a work of art. The staff went above and beyond.",
       rating: 5
     }
   ];
 
   return (
-    <section className="py-24 bg-brand-beige relative overflow-hidden">
+    <section className="py-24 bg-brand-light relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
-        <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="h-px w-8 bg-brand"></div>
-          <span className="text-brand uppercase tracking-widest text-xs font-bold">Reviews</span>
-          <div className="h-px w-8 bg-brand"></div>
-        </div>
-        <h2 className="text-4xl font-serif text-brand-dark mb-16">What Our Guests Say</h2>
+        <h4 className="text-brand font-bold uppercase tracking-widest text-sm mb-4">Reviews</h4>
+        <h2 className="text-5xl font-bold text-brand-dark tracking-tight mb-16">What Guests Say</h2>
 
-        <div className="relative h-64">
+        <div className="bento-card p-12 relative min-h-[350px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0"
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -10 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="w-full"
             >
-              <div className="text-brand mb-6">
-                {[...Array(reviews[current].rating)].map((_, i) => <span key={i} className="text-xl mx-1">★</span>)}
+              <div className="text-brand mb-6 text-2xl flex justify-center gap-1">
+                {[...Array(reviews[current].rating)].map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p className="text-xl md:text-2xl font-serif text-brand-dark italic mb-8 leading-relaxed">
+              <p className="text-2xl md:text-3xl font-bold text-brand-dark mb-8 leading-tight">
                 "{reviews[current].review}"
               </p>
-              <h4 className="font-bold text-sm tracking-wider uppercase text-brand-dark">{reviews[current].name}</h4>
-              <p className="text-xs text-gray-500 mt-1">{reviews[current].title}</p>
+              <h4 className="font-bold tracking-wider text-brand-dark">{reviews[current].name}</h4>
+              <p className="text-sm text-gray-500 font-medium mt-1">{reviews[current].title}</p>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-center gap-3 mt-8">
+        <div className="flex justify-center gap-2 mt-8">
           {reviews.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
-              className={`w-2 h-2 rounded-full transition-all ${current === idx ? 'bg-brand w-8' : 'bg-gray-300'}`}
+              className={`h-2 rounded-full transition-all duration-300 ${current === idx ? 'bg-brand w-8' : 'bg-gray-200 w-2 hover:bg-gray-300'}`}
             />
           ))}
         </div>

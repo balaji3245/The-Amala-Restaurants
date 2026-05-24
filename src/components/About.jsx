@@ -5,24 +5,33 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-brand-light relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
           
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
             viewport={{ once: true }}
-            className="lg:w-1/2 relative"
+            className="grid grid-cols-2 gap-4 h-[600px]"
           >
-            <div className="relative h-[600px] w-full max-w-md mx-auto">
+            <div className="bento-card p-2 h-full">
               <img 
-                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Head Chef" 
-                className="w-full h-full object-cover rounded-t-full shadow-lg border-8 border-brand-beige"
+                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                alt="Chef" 
+                className="w-full h-full object-cover rounded-[20px]"
               />
-              <div className="absolute -bottom-8 -right-8 bg-brand text-white p-8 rounded-sm shadow-xl hidden md:block">
-                <h4 className="font-serif text-2xl mb-1">15+</h4>
-                <p className="text-xs uppercase tracking-widest text-white/80">Years of<br/>Experience</p>
+            </div>
+            <div className="flex flex-col gap-4 h-full">
+              <div className="bento-card p-6 bg-brand text-white flex-1 flex flex-col justify-center items-center text-center">
+                <h3 className="text-6xl font-bold mb-2">15+</h3>
+                <p className="text-sm font-bold uppercase tracking-wider text-white/80">Years Mastery</p>
+              </div>
+              <div className="bento-card p-2 flex-[2]">
+                <img 
+                  src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                  alt="Kitchen" 
+                  className="w-full h-full object-cover rounded-[20px]"
+                />
               </div>
             </div>
           </motion.div>
@@ -30,33 +39,34 @@ const About = () => {
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
             viewport={{ once: true }}
-            className="lg:w-1/2"
+            className="lg:pl-16 mt-12 lg:mt-0"
           >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-px w-12 bg-brand"></div>
-              <span className="text-brand uppercase tracking-widest text-xs font-bold">Our Story</span>
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-serif text-brand-dark mb-8 leading-tight">
-              A Symphony of <br/> <span className="italic text-brand">Flavors & Passion</span>
+            <h4 className="text-brand font-bold uppercase tracking-widest text-sm mb-4">Our Story</h4>
+            <h2 className="text-5xl font-bold text-brand-dark mb-8 leading-tight tracking-tight">
+              Crafting Culinary <br/> Masterpieces.
             </h2>
             
-            <p className="text-gray-600 mb-6 leading-relaxed font-light">
-              Founded in the heart of the city, The Amala has been a beacon of culinary excellence. Our journey started with a simple belief: that dining should be an immersive experience that tantalizes the senses and brings people together.
+            <p className="text-gray-500 mb-6 leading-relaxed text-lg font-medium">
+              Founded in the heart of the city, The Amala is a beacon of modern gastronomy. We believe dining should be an immersive experience that tantalizes all the senses.
             </p>
             
-            <p className="text-gray-600 mb-10 leading-relaxed font-light">
-              Under the guidance of our Executive Chef, we blend traditional techniques with modern innovation to create dishes that are both familiar and extraordinary. Every ingredient is carefully sourced to ensure the highest quality.
+            <p className="text-gray-500 mb-10 leading-relaxed text-lg font-medium">
+              Our kitchen is a laboratory of flavor where traditional techniques meet avant-garde innovation. Every plate is a carefully constructed work of art.
             </p>
 
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_of_John_Hancock.svg" 
-              alt="Signature" 
-              className="h-12 opacity-40"
-            />
-            <p className="mt-2 text-sm text-gray-500 font-medium">Head Chef, The Amala</p>
+            <div className="flex items-center gap-6">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_of_John_Hancock.svg" 
+                alt="Signature" 
+                className="h-12 opacity-80"
+              />
+              <div>
+                <p className="font-bold text-brand-dark text-lg">Executive Chef</p>
+                <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">The Amala</p>
+              </div>
+            </div>
           </motion.div>
 
         </div>

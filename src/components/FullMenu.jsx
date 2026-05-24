@@ -6,26 +6,26 @@ const FullMenu = () => {
 
   const menuData = {
     'Starters': [
-      { name: "Crispy Calamari", desc: "Served with garlic aioli and lemon.", price: "$14" },
-      { name: "Beef Carpaccio", desc: "Thinly sliced beef, capers, parmesan.", price: "$18" },
-      { name: "Bruschetta", desc: "Toasted sourdough, heirloom tomatoes, basil.", price: "$12" },
-      { name: "Truffle Fries", desc: "Shoestring fries, parmesan, truffle oil.", price: "$10" }
+      { name: "Crispy Calamari", desc: "Served with garlic aioli and lemon.", price: "₹250" },
+      { name: "Beef Carpaccio", desc: "Thinly sliced beef, capers, parmesan.", price: "₹350" },
+      { name: "Bruschetta", desc: "Toasted sourdough, heirloom tomatoes, basil.", price: "₹200" },
+      { name: "Truffle Fries", desc: "Shoestring fries, parmesan, truffle oil.", price: "₹150" }
     ],
     'Main Course': [
-      { name: "Grilled Salmon", desc: "Asparagus, quinoa, lemon dill sauce.", price: "$32" },
-      { name: "Ribeye Steak", desc: "12oz grass-fed beef, mashed potatoes.", price: "$45" },
-      { name: "Lobster Linguine", desc: "Fresh pasta, cherry tomatoes, white wine.", price: "$38" },
-      { name: "Roasted Chicken", desc: "Free-range chicken, root vegetables.", price: "$26" }
+      { name: "Grilled Salmon", desc: "Asparagus, quinoa, lemon dill sauce.", price: "₹550" },
+      { name: "Ribeye Steak", desc: "12oz grass-fed beef, mashed potatoes.", price: "₹900" },
+      { name: "Lobster Linguine", desc: "Fresh pasta, cherry tomatoes, white wine.", price: "₹750" },
+      { name: "Roasted Chicken", desc: "Free-range chicken, root vegetables.", price: "₹480" }
     ],
     'Desserts': [
-      { name: "Tiramisu", desc: "Espresso soaked ladyfingers, mascarpone.", price: "$12" },
-      { name: "Chocolate Lava Cake", desc: "Vanilla bean ice cream.", price: "$14" },
-      { name: "Crème Brûlée", desc: "Classic vanilla custard, caramelized sugar.", price: "$11" }
+      { name: "Tiramisu", desc: "Espresso soaked ladyfingers, mascarpone.", price: "₹200" },
+      { name: "Chocolate Lava Cake", desc: "Vanilla bean ice cream.", price: "₹250" },
+      { name: "Crème Brûlée", desc: "Classic vanilla custard, caramelized sugar.", price: "₹180" }
     ],
     'Drinks': [
-      { name: "Signature Cocktail", desc: "Gin, elderflower, cucumber, mint.", price: "$16" },
+      { name: "Signature Cocktail", desc: "Gin, elderflower, cucumber, mint.", price: "₹300" },
       { name: "Fine Wine Pairings", desc: "Ask your server for today's selection.", price: "Var" },
-      { name: "Artisan Coffee", desc: "Locally roasted espresso blends.", price: "$6" }
+      { name: "Artisan Coffee", desc: "Locally roasted espresso blends.", price: "₹120" }
     ]
   };
 
@@ -36,24 +36,20 @@ const FullMenu = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-8 bg-brand"></div>
-            <span className="text-brand uppercase tracking-widest text-xs font-bold">Discover</span>
-            <div className="h-px w-8 bg-brand"></div>
-          </div>
-          <h2 className="text-4xl font-serif text-brand-dark">Full Menu</h2>
+          <h4 className="text-brand font-bold uppercase tracking-widest text-sm mb-4 font-sans">Discover</h4>
+          <h2 className="text-5xl font-serif text-brand-dark tracking-tight">Full Menu</h2>
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-16 bg-gray-50 p-2 rounded-full border border-gray-100 max-w-fit mx-auto overflow-hidden">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-8 py-3 rounded-sm uppercase tracking-widest text-xs font-bold transition-all border ${
+              className={`px-6 py-3 rounded-full font-bold text-sm tracking-wide font-sans transition-all duration-300 ${
                 activeTab === tab 
-                ? 'bg-brand text-white border-brand' 
-                : 'bg-transparent text-brand-dark border-gray-200 hover:border-brand hover:text-brand'
+                ? 'bg-white text-brand-dark shadow-md' 
+                : 'bg-transparent text-gray-500 hover:text-brand-dark'
               }`}
             >
               {tab}
@@ -66,16 +62,17 @@ const FullMenu = () => {
           key={activeTab}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8"
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10"
         >
           {menuData[activeTab].map((item, idx) => (
-            <div key={idx} className="border-b border-gray-100 pb-4">
+            <div key={idx} className="group">
               <div className="flex justify-between items-baseline mb-2">
-                <h3 className="font-serif text-lg text-brand-dark">{item.name}</h3>
-                <span className="text-brand font-bold">{item.price}</span>
+                <h3 className="text-xl font-serif text-brand-dark group-hover:text-brand transition-colors">{item.name}</h3>
+                <div className="flex-1 border-b-2 border-dotted border-gray-200 mx-4 relative top-[-4px]"></div>
+                <span className="text-brand font-bold text-lg font-sans">{item.price}</span>
               </div>
-              <p className="text-gray-500 text-sm font-light">{item.desc}</p>
+              <p className="text-gray-500 text-sm font-medium font-sans">{item.desc}</p>
             </div>
           ))}
         </motion.div>
