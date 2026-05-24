@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-light: #FFF5F0; /* Light Peach Background */
-  --color-brand: #FF6B00; /* Primary Orange */
-  --color-brand-dark: #1F2937; /* Dark Gray / Black Text */
-  --color-brand-beige: #FFE4D6; /* Darker Peach for borders/shadows */
-  --color-brand-green: #FF8A33; /* Secondary Orange for hover */
-  --color-brand-accent: #FFFFFF; /* Pure White */
+  --color-brand: #FF6B00;
+  --color-brand-light: #FFF5EE;
+  --color-brand-dark: #2C1810;
+  --color-brand-beige: #FFDAB9;
+  --color-brand-green: #E66000;
+  --color-brand-accent: #FF8A33;
   
   --font-sans: "Inter", sans-serif;
-  --font-serif: "Inter", sans-serif; /* Using sans-serif for headers to match design */
+  --font-serif: "Playfair Display", serif;
 }
 
 @layer base {
@@ -27,17 +27,8 @@
 }
 
 @layer utilities {
-  .dashed-border-orange {
-    border: 3px dashed var(--color-brand);
-    border-radius: 50%;
-  }
-  
   .glass {
-    @apply bg-white/70 backdrop-blur-sm border border-brand-beige shadow-sm;
-  }
-  
-  .text-glow {
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
   }
 }
 
@@ -47,14 +38,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #fdfbf7;
+  background: #F4F5F0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4af37;
+  background: #6B705C;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b5952f;
+  background: #555A48;
 }

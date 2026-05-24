@@ -1,51 +1,87 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Search } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', to: 'home' },
+    { name: 'About', to: 'about' },
+    { name: 'Dishes', to: 'signature-dishes' },
+    { name: 'Menu', to: 'full-menu' },
+    { name: 'Reservation', to: 'reservation' },
+    { name: 'Contact', to: 'contact' }
+  ];
+
   return (
-    <nav className="fixed w-full z-50 bg-brand-light">
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center">
           
           {/* Logo */}
-          <div className="flex-shrink-0 flex flex-col justify-center cursor-pointer relative">
-            <h1 className="text-2xl font-bold tracking-tight text-brand-dark">
-              The<span className="text-brand">Amala.</span>
-            </h1>
-            {/* Dashed underline as per FoodDash logo */}
-            <div className="border-b-[3px] border-dashed border-brand w-14 mt-1"></div>
+          <div className="flex-shrink-0 cursor-pointer">
+            <Link to="home" smooth={true} duration={500}>
+              <h1 className={`text-2xl font-serif font-bold tracking-wider ${isScrolled ? 'text-brand-dark' : 'text-brand-dark'}`}>
+                THE <span className="text-brand">AMALA</span>
+              </h1>
+            </Link>
           </div>
 
-          {/* Center Links */}
-          <div className="hidden md:flex space-x-10">
-            {['Home', 'Menu', 'Offers', 'Service', 'About Us'].map((item) => (
-              <a 
-                key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-gray-500 hover:text-brand-dark font-medium transition-colors text-sm"
+          {/* Desktop Nav */}
+          <div className="hidden md:flex space-x-8 items-center">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                className="text-sm uppercase tracking-widest font-medium text-brand-dark hover:text-brand cursor-pointer transition-colors"
               >
-                {item}
-              </a>
+                {link.name}
+              </Link>
             ))}
+            <Link to="reservation" smooth={true} duration={500} className="bg-brand text-white px-6 py-2 rounded-sm text-sm uppercase tracking-wider font-medium hover:bg-brand-dark transition-all cursor-pointer">
+              Book Table
+            </Link>
           </div>
 
-          {/* Right Icons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center hover:bg-brand-green transition-colors shadow-sm">
-              <Search className="w-5 h-5" />
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-brand-dark">
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm cursor-pointer">
-              <img 
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
           </div>
 
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 py-4">
+          <div className="flex flex-col space-y-4 px-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm uppercase tracking-widest font-medium text-brand-dark hover:text-brand cursor-pointer border-b border-gray-50 pb-2"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

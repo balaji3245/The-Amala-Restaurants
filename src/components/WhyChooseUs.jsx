@@ -1,91 +1,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const reasons = [
-  { title: 'Fresh Ingredients', desc: 'We source locally to ensure the highest quality and freshness in every dish.' },
-  { title: 'Hygienic Kitchen', desc: 'Strict adherence to cleanliness and food safety protocols.' },
-  { title: 'Experienced Chefs', desc: 'Our culinary team brings decades of experience to your table.' },
-  { title: 'Fast Service', desc: 'Prompt and courteous service without compromising on quality.' },
-];
+import { Leaf, ShieldCheck, Clock, ChefHat } from 'lucide-react';
 
 const WhyChooseUs = () => {
+  const features = [
+    { icon: <Leaf size={32} />, title: "Fresh Ingredients", desc: "We source local, organic produce daily to ensure maximum flavor." },
+    { icon: <ShieldCheck size={32} />, title: "Hygienic Kitchen", desc: "Our pristine kitchen exceeds all health and safety standards." },
+    { icon: <Clock size={32} />, title: "Fast Service", desc: "Prompt, attentive service without compromising on quality." },
+    { icon: <ChefHat size={32} />, title: "Experienced Chefs", desc: "Masterful culinary artists with global experience." }
+  ];
+
   return (
-    <section className="py-32 bg-brand-green text-brand-light">
+    <section className="py-24 bg-brand-dark text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          
-          <div>
-            <motion.h4 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-brand-accent font-medium tracking-widest uppercase mb-3 text-sm"
-            >
-              Our Promise
-            </motion.h4>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight"
-            >
-              Why Choose The Amala?
-            </motion.h2>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
-              {reasons.map((reason, index) => (
-                <motion.div
-                  key={reason.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.2 }}
-                >
-                  <div className="w-12 h-12 rounded-full bg-brand/30 border border-brand/50 flex items-center justify-center text-brand-accent font-medium text-xl mb-5">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-xl font-serif font-medium text-white mb-2">{reason.title}</h3>
-                  <p className="text-white/60 text-sm leading-relaxed">{reason.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+        
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-8 bg-brand-accent"></div>
+            <span className="text-brand-accent uppercase tracking-widest text-xs font-bold">Our Promise</span>
+            <div className="h-px w-8 bg-brand-accent"></div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative h-[600px] rounded-[32px] overflow-hidden shadow-xl border border-white/5"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-              alt="Restaurant Interior" 
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/30" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 bg-black/40 backdrop-blur-md border-t border-white/10">
-              <div className="flex items-center justify-between">
-                <div className="text-center">
-                  <h4 className="text-white font-serif text-2xl lg:text-3xl font-medium">10+</h4>
-                  <p className="text-white/60 text-xs uppercase tracking-widest mt-1">Years</p>
-                </div>
-                <div className="w-px h-12 bg-white/20"></div>
-                <div className="text-center">
-                  <h4 className="text-white font-serif text-2xl lg:text-3xl font-medium">50k+</h4>
-                  <p className="text-white/60 text-xs uppercase tracking-widest mt-1">Guests</p>
-                </div>
-                <div className="w-px h-12 bg-white/20"></div>
-                <div className="text-center">
-                  <h4 className="text-white font-serif text-2xl lg:text-3xl font-medium">100+</h4>
-                  <p className="text-white/60 text-xs uppercase tracking-widest mt-1">Dishes</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
+          <h2 className="text-4xl font-serif">Why Choose Us</h2>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {features.map((feat, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              className="text-center group"
+            >
+              <div className="w-20 h-20 mx-auto border border-white/20 rounded-full flex items-center justify-center mb-6 text-brand-accent group-hover:bg-brand transition-colors duration-500">
+                {feat.icon}
+              </div>
+              <h3 className="font-serif text-xl mb-3">{feat.title}</h3>
+              <p className="text-gray-400 text-sm font-light leading-relaxed">{feat.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

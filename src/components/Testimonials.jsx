@@ -1,60 +1,70 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Testimonials = () => {
+  const [current, setCurrent] = useState(0);
+
   const reviews = [
     {
-      name: "Rahul Sharma",
-      review: "Absolutely fantastic! The food was delivered super fast and it tasted just like homemade Indian food. Highly recommend the Paneer Bhuna Masala.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+      name: "Eleanor Richards",
+      title: "Food Critic",
+      review: "An absolute masterclass in flavor and presentation. The truffle risotto is simply divine, and the ambiance transports you to another world.",
+      rating: 5
     },
     {
-      name: "Priya Patel",
-      review: "The Amala has the best delivery service. The food is always piping hot and the packaging is excellent. The coupons make it a great deal!",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+      name: "James Harrington",
+      title: "Local Guide",
+      review: "The service is impeccable and the wine pairings were perfectly suggested. Truly a premium dining experience right in our city.",
+      rating: 5
     },
     {
-      name: "Amit Kumar",
-      review: "A wonderful dining experience at home. Quick, tasty, and reasonably priced. Their South Indian dishes are to die for.",
-      rating: 4,
-      image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+      name: "Sophia Martinez",
+      title: "Guest",
+      review: "We celebrated our anniversary here and they made it so special. Every dish was a work of art.",
+      rating: 5
     }
   ];
 
   return (
-    <section className="py-16 bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-brand-beige relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
-        <div className="text-center mb-12">
-          <h4 className="text-brand italic font-serif text-xl mb-1">What They Say</h4>
-          <h2 className="text-3xl font-bold text-brand-dark mb-2">Customer <span className="text-brand">Reviews</span></h2>
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="h-px w-8 bg-brand"></div>
+          <span className="text-brand uppercase tracking-widest text-xs font-bold">Reviews</span>
+          <div className="h-px w-8 bg-brand"></div>
+        </div>
+        <h2 className="text-4xl font-serif text-brand-dark mb-16">What Our Guests Say</h2>
+
+        <div className="relative h-64">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <div className="text-brand mb-6">
+                {[...Array(reviews[current].rating)].map((_, i) => <span key={i} className="text-xl mx-1">★</span>)}
+              </div>
+              <p className="text-xl md:text-2xl font-serif text-brand-dark italic mb-8 leading-relaxed">
+                "{reviews[current].review}"
+              </p>
+              <h4 className="font-bold text-sm tracking-wider uppercase text-brand-dark">{reviews[current].name}</h4>
+              <p className="text-xs text-gray-500 mt-1">{reviews[current].title}</p>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review, idx) => (
-            <motion.div 
+        <div className="flex justify-center gap-3 mt-8">
+          {reviews.map((_, idx) => (
+            <button
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-[#FAFAFA] rounded-2xl p-6 relative border border-gray-100 shadow-sm"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-brand">
-                  <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-brand-dark text-sm">{review.name}</h4>
-                  <div className="flex text-yellow-400 text-xs">
-                    {[...Array(review.rating)].map((_, i) => <span key={i}>★</span>)}
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-500 text-xs leading-relaxed italic">"{review.review}"</p>
-            </motion.div>
+              onClick={() => setCurrent(idx)}
+              className={`w-2 h-2 rounded-full transition-all ${current === idx ? 'bg-brand w-8' : 'bg-gray-300'}`}
+            />
           ))}
         </div>
 
