@@ -1,67 +1,67 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const categories = [
-  { name: 'Refreshing Beverages', icon: '🍹', image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&q=80' },
-  { name: 'Soups', icon: '🥣', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&q=80' },
-  { name: 'Quick Bites', icon: '🍟', image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&q=80' },
-  { name: 'Pizza & Pasta', icon: '🍕', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80' },
-  { name: 'Indian Cuisine', icon: '🍛', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&q=80' },
-  { name: 'Oriental Cuisine', icon: '🍜', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=500&q=80' },
-  { name: 'Biryani & Rice', icon: '🍚', image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=500&q=80' },
-  { name: 'Desserts', icon: '🍰', image: 'https://images.unsplash.com/photo-1563805042-7684c8a9e9ca?w=500&q=80' },
-];
-
 const Categories = () => {
+  const dishes = [
+    {
+      name: "Indian Vegetable Pulao",
+      image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      name: "Paneer Bhuna Masala",
+      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      name: "Vermicelli Upma",
+      image: "https://images.unsplash.com/photo-1626779848529-5ee411aebde8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
   return (
-    <section className="py-20 bg-white">
+    <section id="menu" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h4 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-brand font-medium tracking-widest uppercase mb-2"
-          >
-            Explore
-          </motion.h4>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-serif text-brand-dark"
-          >
-            Popular Categories
-          </motion.h2>
+        
+        {/* Header */}
+        <div className="flex justify-between items-end mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark w-full md:w-1/2 leading-tight">
+            Our <span className="text-brand">Best Delivered</span><br/>
+            Indian Dish
+          </h2>
+          <p className="hidden md:block w-1/3 text-gray-400 text-sm leading-relaxed border-l-2 border-gray-100 pl-4">
+            It's not just about bringing you good food from restaurants, we deliver you experience.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 20 }}
+        {/* Circular Items */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {dishes.map((dish, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.2 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer"
+              className="flex flex-col items-center text-center"
             >
-              <div className="aspect-[4/5] w-full">
-                <img 
-                  src={category.image} 
-                  alt={category.name} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="w-48 h-48 rounded-full dashed-border-orange p-2 mb-4 relative group cursor-pointer">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-md">
+                  <img 
+                    src={dish.image} 
+                    alt={dish.name} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
               </div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col items-center text-center">
-                <span className="text-3xl mb-2 transform transition-transform group-hover:-translate-y-2">{category.icon}</span>
-                <h3 className="text-white font-serif text-lg font-medium">{category.name}</h3>
-              </div>
+              <h3 className="text-lg font-bold text-brand-dark w-4/5 leading-snug mb-2">
+                {dish.name}
+              </h3>
+              <a href="#" className="text-brand font-medium hover:text-brand-green transition-colors flex items-center gap-1 text-sm">
+                Order Now <span className="text-base">&gt;</span>
+              </a>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

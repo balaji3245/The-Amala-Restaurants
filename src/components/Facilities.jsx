@@ -32,14 +32,14 @@ const facilities = [
 
 const Facilities = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-32 bg-brand-beige/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.h4 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-brand font-medium tracking-widest uppercase mb-2"
+            className="text-brand font-medium tracking-widest uppercase mb-3 text-sm"
           >
             Amenities
           </motion.h4>
@@ -54,7 +54,7 @@ const Facilities = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
           {facilities.map((facility, index) => {
             const Icon = facility.icon;
             return (
@@ -64,12 +64,12 @@ const Facilities = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-brand-light border border-brand-beige rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+                className="bg-brand-light border border-brand-beige rounded-3xl p-8 text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
               >
-                <div className="mx-auto w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:bg-brand transition-colors duration-300">
-                  <Icon className="w-8 h-8 text-brand group-hover:text-white transition-colors duration-300" />
+                <div className="mx-auto w-16 h-16 bg-brand-beige rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-brand transition-colors duration-300">
+                  <Icon className="w-8 h-8 text-brand group-hover:text-brand-light transition-colors duration-300" />
                 </div>
-                <h3 className="font-medium text-brand-dark">{facility.name}</h3>
+                <h3 className="font-medium text-brand-dark tracking-wide">{facility.name}</h3>
               </motion.div>
             )
           })}

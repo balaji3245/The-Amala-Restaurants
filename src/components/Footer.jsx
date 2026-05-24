@@ -1,81 +1,67 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-dark text-white pt-20 pb-10 border-t border-brand/20">
+    <footer className="bg-brand-light pt-16 pb-12 border-t-[3px] border-dashed border-brand/30 mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           
-          <div className="col-span-1 lg:col-span-1">
-            <h1 className="text-2xl font-bold tracking-wider text-brand mb-1">
-              THE AMALA
-            </h1>
-            <p className="text-[10px] tracking-widest uppercase text-white/70 mb-6">
-              Restaurant & Banquets
+          {/* Col 1 */}
+          <div>
+            <div className="flex-shrink-0 flex flex-col justify-center cursor-pointer relative mb-6">
+              <h1 className="text-2xl font-bold tracking-tight text-brand-dark">
+                The<span className="text-brand">Amala.</span>
+              </h1>
+              <div className="border-b-[3px] border-dashed border-brand w-14 mt-1"></div>
+            </div>
+            
+            <p className="text-gray-500 text-xs mb-6 font-medium">
+              The Amala ©2026 All Rights Reserved<br/><br/>
+              By - The Amala
             </p>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              A luxury dining experience offering an authentic taste of diverse cuisines in an elegant, cozy ambience.
-            </p>
+            
+            <h4 className="text-brand font-bold mb-3 text-sm">Follow Us On</h4>
+            <div className="flex gap-4 text-gray-400 text-xs font-bold uppercase tracking-wider">
+              <a href="#" className="hover:text-brand transition-colors">IG</a>
+              <a href="#" className="hover:text-brand transition-colors">FB</a>
+              <a href="#" className="hover:text-brand transition-colors">X</a>
+              <a href="#" className="hover:text-brand transition-colors">IN</a>
+            </div>
           </div>
 
+          {/* Col 2 */}
           <div>
-            <h4 className="text-lg font-serif font-medium mb-6 text-white border-b border-white/10 pb-2 inline-block">Quick Links</h4>
-            <ul className="space-y-3">
-              {['Home', 'About', 'Menu', 'Gallery', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    to={item.toLowerCase()} 
-                    smooth={true} 
-                    duration={500}
-                    className="text-gray-400 hover:text-brand transition-colors cursor-pointer text-sm"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-brand font-bold mb-6 text-lg">Menu</h4>
+            <ul className="space-y-4 text-xs text-gray-500 font-medium">
+              <li><a href="#" className="hover:text-brand transition-colors">Home</a></li>
+              <li><a href="#" className="hover:text-brand transition-colors">Offers</a></li>
+              <li><a href="#" className="hover:text-brand transition-colors">Service</a></li>
+              <li><a href="#" className="hover:text-brand transition-colors">About Us</a></li>
             </ul>
           </div>
 
+          {/* Col 3 */}
           <div>
-            <h4 className="text-lg font-serif font-medium mb-6 text-white border-b border-white/10 pb-2 inline-block">Opening Hours</h4>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li className="flex justify-between">
-                <span>Monday - Friday</span>
-                <span className="text-brand">11:00 AM - 11:30 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Saturday - Sunday</span>
-                <span className="text-brand">11:00 AM - 11:30 PM</span>
-              </li>
+            <h4 className="text-brand font-bold mb-6 text-lg">Information</h4>
+            <ul className="space-y-4 text-xs text-gray-500 font-medium">
+              <li><a href="#" className="hover:text-brand transition-colors">Menu</a></li>
+              <li><a href="#" className="hover:text-brand transition-colors">Quality</a></li>
+              <li><a href="#" className="hover:text-brand transition-colors">Make A Choice</a></li>
+              <li><a href="#" className="hover:text-brand transition-colors">Fast Delivery</a></li>
             </ul>
           </div>
 
+          {/* Col 4 */}
           <div>
-            <h4 className="text-lg font-serif font-medium mb-6 text-white border-b border-white/10 pb-2 inline-block">Contact</h4>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li className="leading-relaxed">
-                Sonai Chowk, Ausa Ring Rd,<br/> Sona Nagar, Khadgaon,<br/> Maharashtra 413531
-              </li>
-              <li>
-                <a href="tel:09923333989" className="hover:text-brand transition-colors">+91 99233 33989</a>
-              </li>
-              <li>
-                <a href="mailto:info@theamala.com" className="hover:text-brand transition-colors">info@theamala.com</a>
-              </li>
+            <h4 className="text-brand font-bold mb-6 text-lg">Contact</h4>
+            <ul className="space-y-4 text-xs text-gray-500 font-medium">
+              <li><a href="tel:09923333989" className="hover:text-brand transition-colors">+91 99233 33989</a></li>
+              <li><a href="#" className="hover:text-brand transition-colors">Explore</a></li>
+              <li><a href="mailto:info@theamala.com" className="hover:text-brand transition-colors">info@theamala.com</a></li>
+              <li className="leading-relaxed">Sonai Chowk, Ausa Ring Rd, Sona Nagar, Khadgaon, Maharashtra 413531</li>
             </ul>
           </div>
 
-        </div>
-
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-xs text-center md:text-left">
-            &copy; {new Date().getFullYear()} The Amala Restaurant & Banquets. All Rights Reserved.
-          </p>
-          <div className="flex gap-4 text-xs text-gray-500">
-            <a href="#" className="hover:text-brand transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-brand transition-colors">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>

@@ -1,32 +1,22 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
 import Categories from './components/Categories';
+import CategoryBar from './components/CategoryBar';
 import FeaturedMenu from './components/FeaturedMenu';
-import Facilities from './components/Facilities';
-import WhyChooseUs from './components/WhyChooseUs';
-import Gallery from './components/Gallery';
-import Testimonials from './components/Testimonials';
-import Reservation from './components/Reservation';
-import Contact from './components/Contact';
+import Banners from './components/Banners';
 import Footer from './components/Footer';
 import FloatingWidgets from './components/FloatingWidgets';
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-light">
+    <div className="font-sans text-brand-dark min-h-screen bg-white">
       <Navbar />
       <Hero />
-      <About />
       <Categories />
+      <CategoryBar />
       <FeaturedMenu />
-      <Facilities />
-      <WhyChooseUs />
-      <Gallery />
-      <Testimonials />
-      <Reservation />
-      <Contact />
+      <Banners />
       <Footer />
       <FloatingWidgets />
     </div>

@@ -1,73 +1,123 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const menuItems = [
-  { name: 'Paneer Tikka Pizza', desc: 'Fusion pizza with tandoori paneer, mozzarella, and bell peppers.', price: '₹349', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=80' },
-  { name: 'Veg Hyderabadi Biryani', desc: 'Aromatic basmati rice cooked with mixed vegetables and rich spices.', price: '₹299', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&q=80' },
-  { name: 'Paneer Butter Masala', desc: 'Cottage cheese cubes in a creamy, rich tomato and butter gravy.', price: '₹320', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc0?w=500&q=80' },
-  { name: 'Dragon Potato', desc: 'Crispy potato tossed in a spicy, sweet, and tangy dragon sauce.', price: '₹249', image: 'https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?w=500&q=80' },
-  { name: 'Mexican Sizzler', desc: 'Sizzling hot plate with rice, grilled veggies, fries, and Mexican sauce.', price: '₹499', image: 'https://images.unsplash.com/photo-1544025162-811114215b36?w=500&q=80' },
-  { name: 'Jalapeno Cheese Ball', desc: 'Golden fried balls filled with melting cheese and spicy jalapenos.', price: '₹279', image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&q=80' },
-  { name: 'Triple Sundae', desc: 'Three scoops of premium ice cream with nuts, cherry, and chocolate syrup.', price: '₹220', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&q=80' },
-  { name: 'Cold Coffee with Ice Cream', desc: 'Rich blended coffee topped with vanilla ice cream and cocoa dust.', price: '₹180', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&q=80' },
-];
-
 const FeaturedMenu = () => {
+  const menuItems = [
+    {
+      category: "Indian Dessert",
+      name: "Angoori Rasmalai",
+      price: "250",
+      rating: 5,
+      reviews: "100",
+      image: "https://images.unsplash.com/photo-1596450514735-a1112e1069f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: "Indian Tea Time",
+      name: "Snacks",
+      price: "250",
+      rating: 5,
+      reviews: "80",
+      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: "Indian Tea",
+      name: "Time Snacks",
+      price: "200",
+      rating: 5,
+      reviews: "50",
+      image: "https://images.unsplash.com/photo-1626779848529-5ee411aebde8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: "South Indian",
+      name: "Masala Dosa",
+      price: "150",
+      rating: 5,
+      reviews: "120",
+      image: "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: "Gujarati",
+      name: "Pav Bhaji",
+      price: "250",
+      rating: 5,
+      reviews: "50",
+      image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      category: "Rajasthan",
+      name: "Dal Bati Churma",
+      price: "450",
+      rating: 5,
+      reviews: "500",
+      image: "https://images.unsplash.com/photo-1605333396914-256122d25078?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
   return (
-    <section id="menu" className="py-24 bg-brand-light">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h4 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-brand font-medium tracking-widest uppercase mb-2"
-          >
-            Specialties
-          </motion.h4>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-serif text-brand-dark"
-          >
-            Featured Menu
-          </motion.h2>
+        
+        {/* Header */}
+        <div className="flex justify-between items-center mb-16">
+          <div>
+            <h2 className="text-3xl font-bold text-brand-dark mb-1">
+              Our <span className="text-brand">Regular</span> Menu
+            </h2>
+            <p className="text-gray-400 text-xs w-64">
+              These Are Our Regular Menus. You Can Order Anything You Like.
+            </p>
+          </div>
+          <button className="bg-brand text-white px-6 py-2 rounded-full font-medium hover:bg-brand-green transition-colors text-sm shadow-sm">
+            See All
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {menuItems.map((item, index) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 mt-8">
+          {menuItems.map((item, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group border border-brand-beige"
+              className="relative bg-brand-light rounded-tl-3xl rounded-br-3xl rounded-tr-lg rounded-bl-lg p-5 pt-16 border border-brand-beige"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full font-semibold text-brand-dark shadow-sm">
-                  {item.price}
+              {/* Image protruding */}
+              <div className="absolute -top-12 right-4 w-28 h-28 rounded-full dashed-border-orange p-1.5 bg-white">
+                <div className="w-full h-full rounded-full overflow-hidden shadow-sm">
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-semibold text-brand-dark mb-2">{item.name}</h3>
-                <p className="text-gray-500 text-sm line-clamp-2">{item.desc}</p>
-                <div className="mt-4 pt-4 border-t border-brand-beige flex justify-between items-center">
-                  <button className="text-brand font-medium hover:text-brand-dark transition-colors text-sm uppercase tracking-wide">
-                    Order Now
+
+              {/* Text Content */}
+              <div className="w-2/3">
+                <h3 className="text-sm font-bold text-brand-dark leading-snug mb-2">
+                  <span className="text-brand font-medium">{item.category}</span><br/>
+                  {item.name}
+                </h3>
+                
+                {/* Rating */}
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(item.rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400 text-sm">★</span>
+                  ))}
+                  <span className="text-xs text-gray-500 ml-1">({item.reviews})</span>
+                </div>
+
+                {/* Price and Button */}
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-lg font-bold text-brand-dark">₹{item.price}</span>
+                  <button className="bg-brand text-white px-4 py-1.5 rounded-full text-xs font-medium hover:bg-brand-green transition-colors shadow-sm">
+                    Buy Now
                   </button>
                 </div>
               </div>
+
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

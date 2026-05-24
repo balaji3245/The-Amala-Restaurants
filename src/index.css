@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-light: #fdfbf7;
-  --color-brand: #d4af37;
-  --color-brand-dark: #2c2c2c;
-  --color-brand-beige: #f5f0e6;
-  --color-brand-green: #4caf50;
+  --color-brand-light: #FFF5F0; /* Light Peach Background */
+  --color-brand: #FF6B00; /* Primary Orange */
+  --color-brand-dark: #1F2937; /* Dark Gray / Black Text */
+  --color-brand-beige: #FFE4D6; /* Darker Peach for borders/shadows */
+  --color-brand-green: #FF8A33; /* Secondary Orange for hover */
+  --color-brand-accent: #FFFFFF; /* Pure White */
   
   --font-sans: "Inter", sans-serif;
-  --font-serif: "Playfair Display", serif;
+  --font-serif: "Inter", sans-serif; /* Using sans-serif for headers to match design */
 }
 
 @layer base {
@@ -26,16 +27,17 @@
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  .dashed-border-orange {
+    border: 3px dashed var(--color-brand);
+    border-radius: 50%;
   }
   
-  .glass-dark {
-    @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-xl;
+  .glass {
+    @apply bg-white/70 backdrop-blur-sm border border-brand-beige shadow-sm;
   }
   
   .text-glow {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
   }
 }
 

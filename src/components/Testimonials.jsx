@@ -22,14 +22,14 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-brand-beige">
+    <section className="py-32 bg-brand-beige/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.h4 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-brand font-medium tracking-widest uppercase mb-2"
+            className="text-brand font-medium tracking-widest uppercase mb-3 text-sm"
           >
             Reviews
           </motion.h4>
@@ -52,23 +52,23 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white p-8 rounded-2xl shadow-lg relative border border-brand/10"
+              className="bg-brand-light p-10 rounded-3xl shadow-sm border border-brand-beige"
             >
-              <div className="flex text-brand mb-4">
+              <div className="flex text-brand mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
-              <p className="text-gray-600 mb-6 italic leading-relaxed">
+              <p className="text-gray-500 mb-8 italic leading-relaxed">
                 "{testimonial.review}"
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-light rounded-full flex items-center justify-center text-brand font-serif text-xl font-bold border border-brand/20">
+                <div className="w-12 h-12 bg-brand/10 rounded-full flex items-center justify-center text-brand font-serif text-xl font-medium">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-serif font-bold text-brand-dark">{testimonial.name}</h4>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">Verified Guest</p>
+                  <h4 className="font-serif font-medium text-brand-dark">{testimonial.name}</h4>
+                  <p className="text-xs text-gray-400 uppercase tracking-widest mt-1">Verified Guest</p>
                 </div>
               </div>
             </motion.div>

@@ -17,7 +17,7 @@ const FloatingWidgets = () => {
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(34,197,94,0.4)] cursor-pointer"
+        className="w-14 h-14 bg-brand rounded-full flex items-center justify-center text-white shadow-md border border-brand-light/20 cursor-pointer"
         title="Chat on WhatsApp"
       >
         <MessageCircle className="w-7 h-7" />

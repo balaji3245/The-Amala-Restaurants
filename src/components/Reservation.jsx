@@ -23,143 +23,119 @@ const Reservation = () => {
   };
 
   return (
-    <section id="reservation" className="py-24 bg-brand-light relative">
-      {/* Decorative background element */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-beige/50 rounded-l-full hidden lg:block" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-brand-beige">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            
-            {/* Image Side */}
-            <div className="relative h-64 lg:h-auto">
-              <img 
-                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                alt="Reserved Table" 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex items-center justify-center p-8 text-center">
-                <div>
-                  <h3 className="text-3xl font-serif text-white mb-4 text-glow">Book Your Experience</h3>
-                  <p className="text-white/90 max-w-sm mx-auto">
-                    Reserve your table to ensure the perfect spot for your memorable dining experience.
-                  </p>
-                </div>
-              </div>
-            </div>
+    <section id="reservation" className="py-32 bg-brand-light relative">
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+          alt="Reservation Background" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-brand-light/95 backdrop-blur-sm" />
+      </div>
 
-            {/* Form Side */}
-            <div className="p-8 lg:p-12">
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-3xl font-serif text-brand-dark mb-8">Table Reservation</h2>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                      <input 
-                        type="text" 
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-brand transition-colors bg-transparent" 
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                      <input 
-                        type="tel" 
-                        name="phone"
-                        required
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-brand transition-colors bg-transparent" 
-                        placeholder="+91 99233 33989"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div className="relative">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Guests</label>
-                      <div className="flex items-center border-b border-gray-300 py-2 focus-within:border-brand transition-colors">
-                        <Users className="w-4 h-4 text-gray-400 mr-2" />
-                        <select 
-                          name="guests"
-                          value={formData.guests}
-                          onChange={handleChange}
-                          className="w-full bg-transparent focus:outline-none appearance-none cursor-pointer"
-                        >
-                          {[1,2,3,4,5,6,7,8,9,10,'10+'].map(num => (
-                            <option key={num} value={num}>{num} Person{num !== 1 ? 's' : ''}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                    <div className="relative">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
-                      <div className="flex items-center border-b border-gray-300 py-2 focus-within:border-brand transition-colors">
-                        <Calendar className="w-4 h-4 text-gray-400 mr-2" />
-                        <input 
-                          type="date" 
-                          name="date"
-                          required
-                          value={formData.date}
-                          onChange={handleChange}
-                          className="w-full bg-transparent focus:outline-none"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Time</label>
-                      <div className="flex items-center border-b border-gray-300 py-2 focus-within:border-brand transition-colors">
-                        <Clock className="w-4 h-4 text-gray-400 mr-2" />
-                        <input 
-                          type="time" 
-                          name="time"
-                          required
-                          value={formData.time}
-                          onChange={handleChange}
-                          className="w-full bg-transparent focus:outline-none"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Special Requests (Optional)</label>
-                    <div className="flex items-start border-b border-gray-300 py-2 focus-within:border-brand transition-colors">
-                      <MessageSquare className="w-4 h-4 text-gray-400 mr-2 mt-1" />
-                      <textarea 
-                        name="request"
-                        value={formData.request}
-                        onChange={handleChange}
-                        rows="2" 
-                        className="w-full bg-transparent focus:outline-none resize-none"
-                        placeholder="E.g., Anniversary celebration, wheelchair access..."
-                      ></textarea>
-                    </div>
-                  </div>
-
-                  <button 
-                    type="submit" 
-                    className="w-full bg-brand text-white py-4 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-colors shadow-lg mt-4"
-                  >
-                    Confirm Reservation
-                  </button>
-                </form>
-              </motion.div>
-            </div>
-
-          </div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <motion.h4 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-brand font-medium tracking-widest uppercase mb-3 text-sm"
+          >
+            Bookings
+          </motion.h4>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-serif text-brand-dark"
+          >
+            Reserve Your Table
+          </motion.h2>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-white p-8 md:p-12 rounded-[32px] shadow-sm border border-brand-beige"
+        >
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Name</label>
+              <input 
+                type="text" 
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name" 
+                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark placeholder:text-gray-400"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Phone</label>
+              <input 
+                type="tel" 
+                name="phone"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Your Phone Number" 
+                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark placeholder:text-gray-400"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Date</label>
+              <input 
+                type="date" 
+                name="date"
+                required
+                value={formData.date}
+                onChange={handleChange}
+                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark text-gray-500"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Guests</label>
+              <select 
+                name="guests"
+                value={formData.guests}
+                onChange={handleChange}
+                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark text-gray-500"
+              >
+                {[1,2,3,4,5,6,7,8,9,10,'10+'].map(num => (
+                  <option key={num} value={num}>{num} Person{num !== 1 ? 's' : ''}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="md:col-span-2 space-y-2">
+              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Special Requests</label>
+              <textarea 
+                name="request"
+                value={formData.request}
+                onChange={handleChange}
+                rows="3"
+                placeholder="Any special requests or occasion?" 
+                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark placeholder:text-gray-400 resize-none"
+              ></textarea>
+            </div>
+
+            <div className="md:col-span-2 mt-4 text-center">
+              <button 
+                type="submit"
+                className="bg-brand text-white px-10 py-4 rounded-full font-medium tracking-wide hover:bg-brand-green transition-all shadow-sm w-full md:w-auto min-w-[200px]"
+              >
+                Confirm Reservation
+              </button>
+            </div>
+          </form>
+        </motion.div>
       </div>
     </section>
   );
