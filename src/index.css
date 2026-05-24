@@ -28,15 +28,31 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.04)];
+    @apply bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.06)];
+  }
+  
+  .glass-heavy {
+    @apply bg-white/60 backdrop-blur-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.1)];
   }
   
   .bento-card {
-    @apply bg-gray-50 rounded-3xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    @apply bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.06)] rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-white/50;
   }
   
   .pill {
     @apply rounded-full px-6 py-3 font-bold text-sm tracking-wide uppercase transition-all duration-300;
+  }
+
+  .mesh-bg {
+    background-color: #ffffff;
+    background-image: 
+      radial-gradient(at 40% 20%, hsla(28,100%,74%,0.4) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(189,100%,56%,0) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(340,100%,76%,0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(22,100%,77%,0.4) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(242,100%,70%,0) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(343,100%,76%,0) 0px, transparent 50%);
   }
 }
 

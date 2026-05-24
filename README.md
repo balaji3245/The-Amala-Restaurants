@@ -1,16 +1,83 @@
-# React + Vite
+# The Amala Restaurants 🍽️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, ultra-modern Single Page Application (SPA) designed for a fine-dining restaurant experience. This project features a state-of-the-art UI utilizing Bento-grid layouts, glassmorphism, smooth scroll animations, and elegant typography to deliver a luxurious digital atmosphere.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **11-Section Architecture:** A seamless, continuous scrolling experience encompassing Navbar, Hero, About, Signature Dishes, Full Menu, Why Choose Us, Gallery, Testimonials, Reservation, Contact, and Footer.
+- **Ultra-Modern Bento UI:** Interlocking rounded cards and asymmetrical grids for a highly modern aesthetic.
+- **Glassmorphism:** Frosted-glass effects on the sticky navigation bar and overlay cards.
+- **Premium Typography:** High-contrast design featuring bold modern sans-serif paired with elegant `Playfair Display` serif for headings.
+- **Fluid Animations:** Spring-physics powered micro-interactions and scroll animations via Framer Motion.
+- **Localized Content:** Indian Rupee (₹) pricing and realistic restaurant data formatting.
+- **Fully Responsive:** Flawless layout scaling across mobile, tablet, and desktop views.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework:** [React 18](https://react.dev/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Navigation:** `react-scroll`
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Follow these steps to run the project locally:
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1. **Clone the repository** (if you haven't already):
+   ```bash
+   git clone https://github.com/balaji3245/The-Amala-Restaurants.git
+   cd The-Amala-Restaurants
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser:**
+   Open your browser and navigate to `http://localhost:5173/` to view the website.
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI sections
+│   ├── About.jsx
+│   ├── Contact.jsx
+│   ├── Footer.jsx
+│   ├── FullMenu.jsx
+│   ├── Gallery.jsx
+│   ├── Hero.jsx
+│   ├── Navbar.jsx
+│   ├── Reservation.jsx
+│   ├── SignatureDishes.jsx
+│   ├── Testimonials.jsx
+│   └── WhyChooseUs.jsx
+├── App.jsx              # Main layout assembler
+├── index.css            # Tailwind directives and custom CSS variables
+└── main.jsx             # React entry point
+```
+
+## 🎨 Theme Configuration
+
+The project uses a clean **White & Orange** theme with custom properties defined in `index.css`:
+- **Brand Orange:** `#FF6B00`
+- **Brand Dark (Text):** `#000000`
+- **Backgrounds:** Pure White (`#FFFFFF`) and Soft Gray (`#F9FAFB`)
+- **Serif Font:** `Playfair Display`
+- **Sans Font:** `Inter`
+
+---
+*Designed & Developed by The Amala.*

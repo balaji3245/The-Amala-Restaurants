@@ -26,13 +26,13 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 bg-brand-light relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         <h4 className="text-brand font-bold uppercase tracking-widest text-sm mb-4">Reviews</h4>
-        <h2 className="text-5xl font-bold text-brand-dark tracking-tight mb-16">What Guests Say</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-brand-dark tracking-tight mb-12 md:mb-16">What Guests Say</h2>
 
-        <div className="bento-card p-12 relative min-h-[350px] flex items-center justify-center">
+        <div className="bento-card p-6 sm:p-8 md:p-12 relative min-h-[400px] md:min-h-[350px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -42,10 +42,10 @@ const Testimonials = () => {
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="w-full"
             >
-              <div className="text-brand mb-6 text-2xl flex justify-center gap-1">
+              <div className="text-brand mb-6 text-xl md:text-2xl flex justify-center gap-1">
                 {[...Array(reviews[current].rating)].map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-brand-dark mb-8 leading-tight">
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-dark mb-8 leading-relaxed md:leading-tight">
                 "{reviews[current].review}"
               </p>
               <h4 className="font-bold tracking-wider text-brand-dark">{reviews[current].name}</h4>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search, Calendar, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -25,9 +26,10 @@ const Navbar = () => {
       <div className={`max-w-5xl mx-auto rounded-full transition-all duration-500 ${isScrolled ? 'glass py-3 px-6' : 'bg-transparent py-4 px-4'}`}>
         <div className="flex justify-between items-center">
           
-          <div className="flex-shrink-0 cursor-pointer">
-            <Link to="home" smooth={true} duration={500}>
-              <h1 className={`text-xl font-bold tracking-tight ${isScrolled ? 'text-brand-dark' : 'text-brand-dark drop-shadow-sm'}`}>
+          <div className="flex-shrink-0 cursor-pointer flex items-center">
+            <Link to="home" smooth={true} duration={500} className="flex flex-col items-center gap-1">
+              <img src="/amala-logo.png?v=2" alt="The Amala Logo" className="h-8 w-auto object-contain drop-shadow-sm" />
+              <h1 className={`text-base font-bold tracking-tight leading-none ${isScrolled ? 'text-brand-dark' : 'text-brand-dark drop-shadow-sm'}`}>
                 THE<span className="text-brand">AMALA</span>
               </h1>
             </Link>
@@ -47,14 +49,44 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <Link to="reservation" smooth={true} duration={500} className="pill bg-brand text-white hover:bg-brand-dark cursor-pointer shadow-lg shadow-brand/30 hover:shadow-xl hover:shadow-brand/40">
-              Book Table
+          <div className="hidden md:flex items-center gap-3">
+            <div className="flex items-center justify-end">
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out flex items-center ${searchOpen ? 'w-40 opacity-100 mr-2' : 'w-0 opacity-0'}`}>
+                <input 
+                  type="text" 
+                  placeholder="Search..." 
+                  className="w-full bg-white/50 border border-white/60 shadow-sm backdrop-blur-sm rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand text-brand-dark"
+                />
+              </div>
+              <button onClick={() => setSearchOpen(!searchOpen)} className="text-brand-dark hover:text-brand transition-colors w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/50 z-10">
+                {searchOpen ? <X size={20} /> : <Search size={20} />}
+              </button>
+              <button className="text-brand-dark hover:text-brand transition-colors w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/50 z-10 relative ml-1">
+                <ShoppingCart size={20} />
+                <span className="absolute top-1.5 right-1.5 bg-brand text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+              </button>
+            </div>
+            <Link to="reservation" smooth={true} duration={500} className={`bg-brand text-white hover:bg-brand-dark cursor-pointer shadow-lg shadow-brand/30 hover:shadow-xl hover:shadow-brand/40 transition-all duration-500 ease-in-out flex items-center justify-center overflow-hidden uppercase tracking-wide text-sm ${searchOpen ? 'w-10 h-10 p-0 rounded-full' : 'w-[140px] px-4 py-2 rounded-full'}`}>
+              {searchOpen ? <Calendar size={18} className="shrink-0" /> : <span className="whitespace-nowrap font-bold">Book Table</span>}
             </Link>
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-brand-dark">
+          <div className="md:hidden flex items-center gap-2">
+            <div className={`overflow-hidden transition-all duration-300 ease-in-out flex items-center ${searchOpen ? 'w-32 opacity-100 mr-1' : 'w-0 opacity-0'}`}>
+              <input 
+                type="text" 
+                placeholder="Search" 
+                className="w-full bg-white/50 border border-white/60 shadow-sm backdrop-blur-sm rounded-full px-3 py-1.5 text-xs focus:outline-none focus:border-brand text-brand-dark"
+              />
+            </div>
+            <button onClick={() => setSearchOpen(!searchOpen)} className="text-brand-dark hover:text-brand transition-colors p-2">
+              {searchOpen ? <X size={20} /> : <Search size={20} />}
+            </button>
+            <button className="text-brand-dark hover:text-brand transition-colors p-2 relative">
+              <ShoppingCart size={20} />
+              <span className="absolute top-1 right-1 bg-brand text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+            </button>
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-brand-dark p-2">
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>

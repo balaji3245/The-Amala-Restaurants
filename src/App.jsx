@@ -13,18 +13,19 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="font-sans text-brand-dark min-h-screen bg-brand-light flex flex-col">
-      <Navbar />
-      <Hero />
-      <About />
-      <SignatureDishes />
-      <FullMenu />
-      <WhyChooseUs />
-      <Gallery />
-      <Testimonials />
-      <Reservation />
-      <Contact />
-      <Footer />
+    <div className="font-sans text-brand-dark min-h-screen mesh-bg bg-fixed flex flex-col relative">
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <FullMenu />
+        <SignatureDishes />
+        <WhyChooseUs />
+        <Gallery />
+        <Testimonials />
+        <Reservation />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }

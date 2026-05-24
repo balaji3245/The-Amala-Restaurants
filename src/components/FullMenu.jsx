@@ -32,7 +32,7 @@ const FullMenu = () => {
   const tabs = Object.keys(menuData);
 
   return (
-    <section id="full-menu" className="py-24 bg-brand-light relative">
+    <section id="full-menu" className="py-24 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
@@ -41,15 +41,15 @@ const FullMenu = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16 bg-gray-50 p-2 rounded-full border border-gray-100 max-w-fit mx-auto overflow-hidden">
+        <div className="flex flex-wrap justify-center gap-3 mb-16 glass p-2 rounded-full max-w-fit mx-auto overflow-hidden shadow-sm">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-3 rounded-full font-bold text-sm tracking-wide font-sans transition-all duration-300 ${
                 activeTab === tab 
-                ? 'bg-white text-brand-dark shadow-md' 
-                : 'bg-transparent text-gray-500 hover:text-brand-dark'
+                ? 'bg-white/80 text-brand-dark shadow-md' 
+                : 'bg-transparent text-gray-600 hover:text-brand-dark'
               }`}
             >
               {tab}

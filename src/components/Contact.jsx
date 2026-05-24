@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 bg-gray-50">
+    <section id="contact" className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
@@ -14,33 +14,33 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="bento-card p-8 flex items-start gap-6 bg-white">
-              <div className="w-14 h-14 rounded-full bg-orange-50 text-brand flex items-center justify-center shrink-0">
+            <div className="bento-card p-6 md:p-8 flex items-start gap-4 md:gap-6">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand/10 text-brand flex items-center justify-center shrink-0 border border-brand/20">
                 <MapPin size={24} />
               </div>
               <div>
                 <h4 className="font-bold text-sm tracking-wider uppercase text-brand-dark mb-2">Location</h4>
-                <p className="text-gray-500 text-sm leading-relaxed font-medium">Sonai Chowk, Ausa Ring Rd, Sona Nagar,<br/>Khadgaon, Latur, Maharashtra 413531</p>
+                <p className="text-gray-600 text-sm leading-relaxed font-medium">Sonai Chowk, Ausa Ring Rd, Sona Nagar,<br className="hidden sm:block"/>Khadgaon, Latur, Maharashtra 413531</p>
               </div>
             </div>
 
-            <div className="bento-card p-8 flex items-start gap-6 bg-white">
-              <div className="w-14 h-14 rounded-full bg-orange-50 text-brand flex items-center justify-center shrink-0">
+            <div className="bento-card p-6 md:p-8 flex items-start gap-4 md:gap-6">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand/10 text-brand flex items-center justify-center shrink-0 border border-brand/20">
                 <Phone size={24} />
               </div>
               <div>
                 <h4 className="font-bold text-sm tracking-wider uppercase text-brand-dark mb-2">Phone</h4>
-                <a href="tel:09923333989" className="text-gray-500 text-sm font-bold hover:text-brand transition-colors">+91 99233 33989</a>
+                <a href="tel:09923333989" className="text-gray-600 text-sm font-bold hover:text-brand transition-colors">+91 99233 33989</a>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bento-card p-6 bg-white flex flex-col items-center text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="bento-card p-6 flex flex-col items-center text-center">
                 <Mail size={24} className="text-brand mb-4" />
                 <h4 className="font-bold text-xs tracking-wider uppercase text-brand-dark mb-2">Email</h4>
-                <a href="mailto:info@theamala.com" className="text-gray-500 text-xs font-bold hover:text-brand">info@theamala.com</a>
+                <a href="mailto:info@theamala.com" className="text-gray-600 text-xs font-bold hover:text-brand">info@theamala.com</a>
               </div>
-              <div className="bento-card p-6 bg-brand text-white flex flex-col items-center text-center">
+              <div className="rounded-[24px] p-6 bg-brand/90 text-white flex flex-col items-center text-center backdrop-blur-md border border-brand/20 shadow-lg shadow-brand/20">
                 <Clock size={24} className="mb-4" />
                 <h4 className="font-bold text-xs tracking-wider uppercase text-white/80 mb-2">Hours</h4>
                 <p className="text-white text-xs font-bold">11 AM - 11 PM</p>

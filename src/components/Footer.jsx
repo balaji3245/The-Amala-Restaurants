@@ -1,80 +1,108 @@
 import React from 'react';
-import { Link } from 'react-scroll';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-white pt-24 pb-12 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-white/30 backdrop-blur-3xl pt-24 pb-12 border-t border-white/60 relative overflow-hidden">
+      
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-brand/10 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FF8A33]/10 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="bento-card bg-brand-dark p-12 lg:p-16 mb-16 flex flex-col lg:flex-row items-center justify-between text-white">
-          <div className="text-center lg:text-left mb-8 lg:mb-0">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">Ready for a culinary journey?</h2>
-            <p className="text-gray-400 font-medium">Reserve your table now and experience the extraordinary.</p>
+        <div className="bg-brand/5 backdrop-blur-md border border-brand/10 rounded-3xl p-8 sm:p-12 mb-20 flex flex-col md:flex-row items-center justify-between shadow-sm">
+          <div className="mb-6 md:mb-0 text-center md:text-left">
+            <h3 className="text-3xl font-serif text-brand-dark mb-2">Ready for a culinary journey?</h3>
+            <p className="text-gray-600 font-medium">Reserve your table now and experience the extraordinary.</p>
           </div>
-          <Link to="reservation" smooth={true} duration={500} className="pill bg-brand text-white shadow-lg shadow-brand/20 hover:-translate-y-1 hover:shadow-xl cursor-pointer py-4 px-8 text-lg">
+          <button className="pill bg-brand text-white shadow-lg shadow-brand/20 hover:shadow-xl hover:-translate-y-1">
             Book a Table
-          </Link>
+          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
           <div className="lg:col-span-1">
-            <Link to="home" smooth={true} duration={500} className="cursor-pointer inline-block mb-6">
-              <h1 className="text-2xl font-bold tracking-tight text-brand-dark">
+            <div className="flex flex-col gap-1 mb-6">
+              <img src="/amala-logo.png?v=2" alt="The Amala Logo" className="h-10 w-auto object-contain object-left mix-blend-multiply" />
+              <h1 className="text-xl font-bold tracking-tight leading-none text-brand-dark">
                 THE<span className="text-brand">AMALA</span>
               </h1>
-            </Link>
-            <p className="text-gray-500 text-sm leading-relaxed mb-8 font-medium">
-              Where culinary excellence meets sophisticated ambiance. Join us for an unforgettable dining experience.
+            </div>
+            <p className="text-gray-500 text-sm leading-relaxed font-medium mb-6">
+              Where culinary artistry meets modern elegance. An unforgettable dining experience awaits you.
             </p>
-            <div className="flex gap-3">
-              {['IN', 'FB', 'IG'].map(social => (
-                <a key={social} href="#" className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center hover:bg-brand hover:text-white hover:border-brand transition-colors text-brand-dark font-bold text-xs">
-                  {social}
-                </a>
-              ))}
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-brand-dark hover:text-brand hover:-translate-y-1 transition-all font-bold text-xs">
+                IG
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-brand-dark hover:text-brand hover:-translate-y-1 transition-all font-bold text-xs">
+                FB
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-brand-dark hover:text-brand hover:-translate-y-1 transition-all font-bold text-xs">
+                X
+              </a>
             </div>
           </div>
 
-          <div>
-            <h4 className="font-bold text-brand-dark tracking-wider uppercase text-sm mb-6">Quick Links</h4>
-            <ul className="space-y-4 text-sm text-gray-500 font-bold">
-              <li><Link to="about" smooth={true} duration={500} className="hover:text-brand transition-colors cursor-pointer">Our Story</Link></li>
-              <li><Link to="full-menu" smooth={true} duration={500} className="hover:text-brand transition-colors cursor-pointer">Menu</Link></li>
-              <li><Link to="reservation" smooth={true} duration={500} className="hover:text-brand transition-colors cursor-pointer">Reservations</Link></li>
-              <li><Link to="gallery" smooth={true} duration={500} className="hover:text-brand transition-colors cursor-pointer">Gallery</Link></li>
+          <div className="lg:col-span-1">
+            <h3 className="text-lg font-bold text-brand-dark mb-6 tracking-wide">Links</h3>
+            <ul className="space-y-4">
+              {['Home', 'About', 'Menu', 'Reservation'].map((item) => (
+                <li key={item}>
+                  <a href={`#${item.toLowerCase()}`} className="text-gray-500 hover:text-brand transition-colors text-sm font-medium flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand/30 group-hover:bg-brand transition-colors"></span>
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-brand-dark tracking-wider uppercase text-sm mb-6">Information</h4>
-            <ul className="space-y-4 text-sm text-gray-500 font-bold">
-              <li><a href="#" className="hover:text-brand transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-brand transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-brand transition-colors">Gift Cards</a></li>
-              <li><a href="#" className="hover:text-brand transition-colors">Careers</a></li>
+          <div className="lg:col-span-1">
+            <h3 className="text-lg font-bold text-brand-dark mb-6 tracking-wide">Legal</h3>
+            <ul className="space-y-4">
+              {['Terms of Service', 'Privacy Policy', 'Cookie Policy'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-gray-500 hover:text-brand transition-colors text-sm font-medium flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand/30 group-hover:bg-brand transition-colors"></span>
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-brand-dark tracking-wider uppercase text-sm mb-6">Newsletter</h4>
-            <p className="text-gray-500 text-sm font-medium mb-4">Subscribe to receive updates and exclusive deals.</p>
-            <form className="flex">
-              <input 
-                type="email" 
-                placeholder="Enter email" 
-                className="bg-gray-50 border border-gray-100 rounded-l-full px-4 py-3 w-full focus:outline-none focus:border-brand text-sm font-bold"
-              />
-              <button type="submit" className="bg-brand text-white px-6 py-3 rounded-r-full font-bold text-sm uppercase tracking-wider hover:bg-brand-dark transition-colors">
-                Go
-              </button>
-            </form>
+          <div className="lg:col-span-1">
+            <h3 className="text-lg font-bold text-brand-dark mb-6 tracking-wide">Contact</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-brand shrink-0 mt-0.5" />
+                <span className="text-gray-500 text-sm font-medium">123 Culinary Boulevard, <br/> Gourmet District, City 10001</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-brand shrink-0" />
+                <span className="text-gray-500 text-sm font-medium">+1 (555) 123-4567</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-brand shrink-0" />
+                <span className="text-gray-500 text-sm font-medium">reservations@theamala.com</span>
+              </li>
+            </ul>
           </div>
+
         </div>
 
-        <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm font-bold">© 2026 The Amala Restaurant. All rights reserved.</p>
-          <p className="text-gray-400 text-sm font-bold">Designed by The Amala</p>
+        <div className="border-t border-white/40 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-400 text-sm font-medium text-center md:text-left">
+            &copy; {new Date().getFullYear()} The Amala Restaurant. All rights reserved.
+          </p>
+          <p className="text-gray-400 text-sm font-medium flex items-center gap-1">
+            Crafted with <span className="text-brand">♥</span> for food lovers.
+          </p>
         </div>
+
       </div>
     </footer>
   );

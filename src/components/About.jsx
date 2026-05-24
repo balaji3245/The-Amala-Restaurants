@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-brand-light relative">
+    <section id="about" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
           
@@ -12,17 +12,17 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4 h-[600px]"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-auto sm:h-[480px]"
           >
-            <div className="bento-card p-2 h-full">
+            <div className="bento-card p-2 h-[300px] sm:h-full">
               <img 
                 src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
                 alt="Chef" 
                 className="w-full h-full object-cover rounded-[20px]"
               />
             </div>
-            <div className="flex flex-col gap-4 h-full">
-              <div className="bento-card p-6 bg-brand text-white flex-1 flex flex-col justify-center items-center text-center">
+            <div className="flex flex-col gap-4 h-[400px] sm:h-full">
+              <div className="rounded-[24px] p-6 bg-brand/90 text-white flex-1 flex flex-col justify-center items-center text-center backdrop-blur-md border border-brand/20 shadow-lg shadow-brand/20">
                 <h3 className="text-6xl font-bold mb-2">15+</h3>
                 <p className="text-sm font-bold uppercase tracking-wider text-white/80">Years Mastery</p>
               </div>
@@ -58,9 +58,9 @@ const About = () => {
 
             <div className="flex items-center gap-6">
               <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_of_John_Hancock.svg" 
-                alt="Signature" 
-                className="h-12 opacity-80"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Signature_of_John_Hancock.svg/320px-Signature_of_John_Hancock.svg.png" 
+                alt="Chef Signature" 
+                className="h-12 opacity-80 mix-blend-multiply"
               />
               <div>
                 <p className="font-bold text-brand-dark text-lg">Executive Chef</p>

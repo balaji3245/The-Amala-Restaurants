@@ -24,7 +24,7 @@ const SignatureDishes = () => {
   ];
 
   return (
-    <section id="signature-dishes" className="py-24 bg-brand-light relative">
+    <section id="signature-dishes" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -32,7 +32,7 @@ const SignatureDishes = () => {
             <h4 className="text-brand font-bold uppercase tracking-widest text-sm mb-4 font-sans">Chef's Selection</h4>
             <h2 className="text-5xl font-serif text-brand-dark tracking-tight">Signature Dishes</h2>
           </div>
-          <a href="#full-menu" className="pill bg-gray-100 text-brand-dark hover:bg-gray-200 border border-gray-200 font-sans">
+          <a href="#full-menu" className="pill glass text-brand-dark hover:bg-white/50 border border-white/60 font-sans shadow-sm">
             View All Dishes
           </a>
         </div>
@@ -47,7 +47,7 @@ const SignatureDishes = () => {
               viewport={{ once: true }}
               className="bento-card group cursor-pointer flex flex-col"
             >
-              <div className="h-64 overflow-hidden relative m-2 rounded-2xl">
+              <div className="h-48 min-h-[192px] shrink-0 overflow-hidden relative m-2 rounded-2xl">
                 <img 
                   src={dish.image} 
                   alt={dish.name} 
@@ -57,10 +57,10 @@ const SignatureDishes = () => {
                   {dish.price}
                 </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-2xl font-serif text-brand-dark mb-3 group-hover:text-brand transition-colors">{dish.name}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed font-medium font-sans">{dish.desc}</p>
+                  <h3 className="text-xl font-serif text-brand-dark mb-2 group-hover:text-brand transition-colors">{dish.name}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed font-medium font-sans">{dish.desc}</p>
                 </div>
                 <div className="mt-6">
                   <button className="text-brand font-bold uppercase tracking-wider text-sm hover:underline font-sans">
