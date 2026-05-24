@@ -1,141 +1,63 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Clock, Users, MessageSquare } from 'lucide-react';
+import React from 'react';
 
 const Reservation = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    guests: '2',
-    date: '',
-    time: '',
-    request: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Thank you! Your table request has been received. We will confirm shortly via phone.');
-    setFormData({ name: '', phone: '', guests: '2', date: '', time: '', request: '' });
-  };
-
   return (
-    <section id="reservation" className="py-32 bg-brand-light relative">
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-          alt="Reservation Background" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-brand-light/95 backdrop-blur-sm" />
-      </div>
+    <section id="reservation" className="py-16 bg-brand-light relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl shadow-sm border border-brand-beige p-8 md:p-12">
+          
+          <div className="text-center mb-10">
+            <h4 className="text-brand italic font-serif text-xl mb-1">Book A Table</h4>
+            <h2 className="text-3xl font-bold text-brand-dark mb-2">Make A <span className="text-brand">Reservation</span></h2>
+            <p className="text-gray-400 text-sm">Reserve your spot and enjoy the best food with the speed of dash.</p>
+          </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <motion.h4 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-brand font-medium tracking-widest uppercase mb-3 text-sm"
-          >
-            Bookings
-          </motion.h4>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-serif text-brand-dark"
-          >
-            Reserve Your Table
-          </motion.h2>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white p-8 md:p-12 rounded-[32px] shadow-sm border border-brand-beige"
-        >
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Name</label>
+          <form className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <input 
                 type="text" 
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
                 placeholder="Your Name" 
-                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark placeholder:text-gray-400"
+                className="w-full px-5 py-3 rounded-full border border-gray-200 bg-gray-50 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-sm"
               />
-            </div>
-            
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Phone</label>
+              <input 
+                type="email" 
+                placeholder="Your Email" 
+                className="w-full px-5 py-3 rounded-full border border-gray-200 bg-gray-50 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-sm"
+              />
               <input 
                 type="tel" 
-                name="phone"
-                required
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Your Phone Number" 
-                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark placeholder:text-gray-400"
+                placeholder="Phone Number" 
+                className="w-full px-5 py-3 rounded-full border border-gray-200 bg-gray-50 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-sm"
               />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Date</label>
               <input 
                 type="date" 
-                name="date"
-                required
-                value={formData.date}
-                onChange={handleChange}
-                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark text-gray-500"
+                className="w-full px-5 py-3 rounded-full border border-gray-200 bg-gray-50 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-sm text-gray-500"
               />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Guests</label>
-              <select 
-                name="guests"
-                value={formData.guests}
-                onChange={handleChange}
-                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark text-gray-500"
-              >
-                {[1,2,3,4,5,6,7,8,9,10,'10+'].map(num => (
-                  <option key={num} value={num}>{num} Person{num !== 1 ? 's' : ''}</option>
-                ))}
+              <input 
+                type="time" 
+                className="w-full px-5 py-3 rounded-full border border-gray-200 bg-gray-50 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-sm text-gray-500"
+              />
+              <select className="w-full px-5 py-3 rounded-full border border-gray-200 bg-gray-50 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-sm text-gray-500 appearance-none">
+                <option value="">Number of Guests</option>
+                <option value="1">1 Person</option>
+                <option value="2">2 People</option>
+                <option value="3">3 People</option>
+                <option value="4">4 People</option>
+                <option value="5+">5+ People</option>
               </select>
             </div>
-
-            <div className="md:col-span-2 space-y-2">
-              <label className="text-sm font-medium text-brand-dark uppercase tracking-wider">Special Requests</label>
-              <textarea 
-                name="request"
-                value={formData.request}
-                onChange={handleChange}
-                rows="3"
-                placeholder="Any special requests or occasion?" 
-                className="w-full border-b border-brand-beige py-3 px-2 bg-transparent focus:outline-none focus:border-brand transition-colors text-brand-dark placeholder:text-gray-400 resize-none"
-              ></textarea>
-            </div>
-
-            <div className="md:col-span-2 mt-4 text-center">
+            
+            <div className="text-center mt-8">
               <button 
-                type="submit"
-                className="bg-brand text-white px-10 py-4 rounded-full font-medium tracking-wide hover:bg-brand-green transition-all shadow-sm w-full md:w-auto min-w-[200px]"
+                type="submit" 
+                className="bg-brand text-white px-10 py-3 rounded-full font-bold tracking-wide hover:bg-brand-green transition-all shadow-md"
               >
-                Confirm Reservation
+                Book Now
               </button>
             </div>
           </form>
-        </motion.div>
+
+        </div>
       </div>
     </section>
   );
